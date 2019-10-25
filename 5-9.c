@@ -6,6 +6,9 @@ int main(void)
 	int num;
 	int tensu[NUMBER];
 	int bunpu[11]={0};
+	int max=0;
+	int max1=0;
+	int v[11];
 
 	printf("请输入学生人数:");
 	do {
@@ -24,4 +27,23 @@ int main(void)
 		bunpu[tensu[i]/10]++;
 	}
 	puts("\n---分布图---");
-	printf("
+	for(i=10;i>=0;i--){
+        	for(j=0;j<bunpu[i];j++)
+			max1=max1+1;
+		v[i]=max1;
+		max=max>v[i] ? max:v[i];
+	}
+	printf("%d",max);
+	for(i=max;i>0;i--){
+		for(j=10;j>=0;j--){
+			if(v[j]>=i)
+				puts(" ");
+		        else
+				puts("*");
+		}
+		putchar('\n');
+	}return 0;
+}
+
+
+
